@@ -1,73 +1,67 @@
 #include "main.h"
 
 /**
- * _putchar - Writes a character to stdout
- * @c: Character to print
- * Return: 1 on success
- */
-int _putchar(char c)
-{
-    return write(1, &c, 1);
-}
-
-/**
- * _printf - Custom implementation of printf
- * @format: Format string
+ * _printf - Custom printf function that handles %c, %s, %%
+ * @format: The format string
  * Return: Number of characters printed (excluding null byte)
  */
 int _printf(const char *format, ...)
 {
-    va_list args;
-    int count = 0;
-    int i = 0;
+	va_list args;
+	int count = 0;
+	char *str;
+	int i;
 
-    if (!format)
-        return -1;
+	if (format == NULL)
+		return (-1);
 
-    va_start(args, format);
+	va_start(args, format);
 
-    while (format[i])
-    {
-        if (format[i] == '%')
-        {
-            i++;
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			if (*format == '\0')
+				break;
 
-            if (!format[i]) 
-            {
-                va_end(args);
-                return -1;
-            }
+			if (*format == 'c')
+			{
+				char c = va_arg(args, int);
+				write(1, &c, 1);
+				count++;
+			}
+			else if (*format == 's')
+			{
+				str = va_arg(args, char *);
+				if (str == NULL)
+					str = "(null)";
+				for (i = 0; str[i] != '\0'; i++)
+				{
+					write(1, &str[i], 1);
+					count++;
+				}
+			}
+			else if (*format == '%')
+			{
+				write(1, "%", 1);
+				count++;
+			}
+			else
+			{
+				write(1, "%", 1);
+				write(1, format, 1);
+				count += 2;
+			}
+		}
+		else
+		{
+			write(1, format, 1);
+			count++;
+		}
+		format++;
+	}
 
-            switch (format[i])
-            {
-                case 'c':
-                    count += _putchar(va_arg(args, int));
-                    break;
-                case 's': {
-                    char *str = va_arg(args, char *);
-                    int j = 0;
-                    if (!str)
-                        str = "(null)";
-                    while (str[j])
-                        count += _putchar(str[j++]);
-                    break;
-                }
-                case '%':
-                    count += _putchar('%');
-                    break;
-                default:
-                    count += _putchar('%');
-                    count += _putchar(format[i]);
-            }
-        }
-        else
-        {
-            count += _putchar(format[i]);
-        }
-
-        i++;
-    }
-
-    va_end(args);
-    return count;
+	va_end(args);
+	return (count);
 }
