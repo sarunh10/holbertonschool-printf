@@ -3,7 +3,7 @@
 #include <unistd.h>
 
 /**
- * _printf - Simplified version of printf
+ * _printf - Simplified printf
  * @format: format string
  * Return: number of characters printed
  */
