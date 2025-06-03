@@ -28,9 +28,9 @@ int print_string(va_list args)
 
 	if (s == NULL)
 		s = "(null)";
-		while (s[i])
-			write(1, &s[i++], 1);
-			return (i);
+	while (s[i])
+		write(1, &s[i++], 1);
+	return (i);
 }
 
 /**
@@ -72,7 +72,7 @@ int print_int(va_list args)
 	while (i--)
 		write(1, &buffer[i], 1);
 		count++;
-	
+
 	return (count);
 }
 
