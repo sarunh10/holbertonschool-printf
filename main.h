@@ -6,5 +6,5 @@
 
 int _printf(const char *format, ...);
 int handle_specifier(char specifier, va_list args);
-
+int _putchar(char c);
 #endif
