@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (!*format) // % at the end without specifier
+			if (!*format) /* % at the end without specifier */
 			{
 				va_end(args);
 				return (-1);
