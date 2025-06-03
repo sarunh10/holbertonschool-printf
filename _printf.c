@@ -36,11 +36,7 @@ int print_string(va_list args)
 /**
  * print_int - prints an integer
  * @args: va_list containing the integer
- * @n: argument of type integer
- * @num: absolute value of n
  * buffer - stores each digit in number in reverse
- * @i: for buffer
- * @count: count of total numbers printed
  * Return: number of integers
  */
 
@@ -53,26 +49,30 @@ int print_int(va_list args)
 	int count = 0;
 
 	if (n < 0)
+	{
 		write(1, "-", 1);
 		count++;
 		num = -n;
-
+	}
 	else
 		num = n;
 
 	if (num == 0)
+	{
 		write(1, "0", 1);
 		count++;
 		return (count);
-
+	}
 	while (num > 0)
+	{
 		buffer[i++] = (num % 10) + '0';
 		num /= 10;
-
+	}
 	while (i--)
+	{
 		write(1, &buffer[i], 1);
 		count++;
-
+	}
 	return (count);
 }
 
@@ -91,11 +91,15 @@ int _printf(const char *format, ...)
 		return (-1);
 	va_start(args, format);
 	while (*format)
+	{
 		if (*format == '%')
+		{
 			format++;
 			if (!*format)
+			{
 				va_end(args);
 				return (-1);
+			}
 			if (*format == 'c')
 				count += print_char(args);
 			else if (*format == 's')
@@ -105,13 +109,19 @@ int _printf(const char *format, ...)
 			else if (*format == 'd' || *format == 'i')
 				count += print_int(args);
 			else
+			{
 				write(1, "%", 1);
 				write(1, format, 1);
 				count += 2;
+			}
+		}
 		else
+		{
 			write(1, format, 1);
 			count++;
+		}
 		format++;
+	}
 	va_end(args);
 	return (count);
 }
