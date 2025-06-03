@@ -114,13 +114,14 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				count += 2;
 			}
+			format++;
 		}
 		else
 		{
 			write(1, format, 1);
 			count++;
+			format++;
 		}
-		format++;
 	}
 	va_end(args);
 	return (count);
