@@ -1,18 +1,18 @@
 #include "main.h"
 
 /**
- * _printf - Custom printf function that handles %c, %s, %%
+ * _printf - Custom printf function
  * @format: The format string
- * Return: Number of characters printed (excluding null byte)
+ * Return: The number of characters printed
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
-	char *str;
+	char *s;
 	int i;
 
-	if (format == NULL)
+	if (!format)
 		return (-1);
 
 	va_start(args, format);
@@ -33,12 +33,12 @@ int _printf(const char *format, ...)
 			}
 			else if (*format == 's')
 			{
-				str = va_arg(args, char *);
-				if (str == NULL)
-					str = "(null)";
-				for (i = 0; str[i] != '\0'; i++)
+				s = va_arg(args, char *);
+				if (!s)
+					s = "(null)";
+				for (i = 0; s[i]; i++)
 				{
-					write(1, &str[i], 1);
+					write(1, &s[i], 1);
 					count++;
 				}
 			}
@@ -64,4 +64,5 @@ int _printf(const char *format, ...)
 
 	va_end(args);
 	return (count);
+}
 }
