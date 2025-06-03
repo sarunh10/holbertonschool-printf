@@ -45,7 +45,7 @@ int print_int(va_list args)
 	int n = va_arg(args, int);
 	unsigned int num;
 	char buffer[10];
-	int i;
+	int i = 0;
 	int count = 0;
 
 	if (n < 0)
@@ -114,14 +114,13 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				count += 2;
 			}
-			format++;
 		}
 		else
 		{
 			write(1, format, 1);
 			count++;
-			format++;
 		}
+		format++;
 	}
 	va_end(args);
 	return (count);
