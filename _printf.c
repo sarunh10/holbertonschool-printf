@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
         {
             i++;
 
-            if (!format[i]) // إذا كانت نهاية السلسلة بعد %
+            if (!format[i]) 
             {
                 va_end(args);
                 return -1;
