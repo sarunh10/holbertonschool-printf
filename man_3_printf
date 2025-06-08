@@ -1,0 +1,38 @@
+.TH printf 3 "June 2025" "Holberton" "Custom printf man page"
+
+.SH NAME
+printf \- custom implementation of the printf function
+
+.SH SYNOPSIS
+.B int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+The
+.B _printf
+function produces output according to a format string and arguments.
+
+It works similarly to the standard printf function. The format string can contain plain characters to be printed as well as format specifiers that start with a '%' character.
+
+Supported format specifiers include:
+- %c: print a character
+- %s: print a string
+- %%: print a percent sign
+- %d, %i: print an integer
+
+.SH RETURN VALUE
+Upon successful return, the number of characters printed is returned (excluding the null byte). If an error occurs, a negative number is returned.
+
+.SH EXAMPLES
+.B _printf("Hello %s\n", "world");
+will print:
+.I Hello world
+
+.B _printf("Number: %d\n", 42);
+will print:
+.I Number: 42
+
+.SH AUTHORS
+Written by Holberton School students.
+
+.SH SEE ALSO
+.BR printf (3)

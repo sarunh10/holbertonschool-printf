@@ -108,6 +108,9 @@ int _printf(const char *format, ...)
 				count += write(1, "%", 1);
 			else if (*format == 'd' || *format == 'i')
 				count += print_int(args);
+			else if (*format == 'b')
+				count += print_binary(va_arg(args, unsigned int));
+
 			else
 			{
 				write(1, "%", 1);
