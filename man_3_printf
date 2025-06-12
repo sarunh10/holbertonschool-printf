@@ -1,6 +1,6 @@
 .TH _PRINTF 3 "June 2025" "Holberton School" "User Functions"
-.SH
-_printf \- A copy cat of the original printf. Basically, it produces the formatted output according to the format string.
+.SH NAME
+_printf \- A copycat of the original printf, producing the formatted output according to the format string.
 .SH SYNOPSIS
 .B #include "main.h"
 .br
@@ -10,47 +10,43 @@ Similar to the
 .B printf()
 function, the
 .B _printf()
-function produces formatted output, according to the format string, to the standard output. In Order to specify which format we are using, the function looks for the "%" character and reads the character after it. Accordingly, it will choose one of the following specifiers:
+function produces formatted output, according to a format string, to the standard output.
+In order to specify which format we are using, the function looks for the "%" character
+and reads the character after it. Accordingly, it will choose one of the following specifiers:
+
 .SH FORMAT SPECIFIERS
 .TP
 .B %c
 Prints a single character.
-
 .TP
 .B %s
 Prints a null-terminated string.
-
 .TP
 .B %%
 Prints a literal percent sign.
-
 .TP
 .B %d, %i
 Prints a signed decimal integer.
-
 .SH RETURN VALUE
-If the operation is successful, the function will return the total number of characters that was printed. Otherwise, It will reutrn -1.
-
+If the operation is successful, the function returns the total number of characters that were printed. Otherwise, it returns -1.
 .SH EXAMPLES
 .nf
-	_printf("Your final mark is %c", 'A');
-	Returns: 20
+_printf("Your final mark is %c", 'A');
+Returns: 20
 
-	_printf("Holberton Academy is %s!", "fun");
-	Returns: 25
+_printf("Holberton Academy is %s!", "fun");
+Returns: 25
 
-	_printf("Did you just type %%?");
-	Returns: 20
+_printf("Did you just type %%?");
+Returns: 20
 
-	_printf("He got %d out of a 100!", 100);
-	Returns: 24
+_printf("He got %d out of a 100!", 100);
+Returns: 24
 
-	_printf("An apple away keeps %i doctors away", 10);
-	Returns: 35
+_printf("An apple a day keeps %i doctors away", 10);
+Returns: 36
 .fi
-
 .SH AUTHOR
-Written by Sultan.
-
+Written by Sultan Alsanie.
 .SH SEE ALSO
 printf(3)
