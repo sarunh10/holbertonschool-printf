@@ -108,7 +108,6 @@ int _printf(const char *format, ...)
 				count += write(1, "%", 1);
 			else if (*format == 'd' || *format == 'i')
 				count += print_int(args);
-
 			else
 			{
 				write(1, "%", 1);
